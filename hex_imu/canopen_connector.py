@@ -24,7 +24,7 @@ class CanopenConnector:
         self.frame_id = frame_id
 
         # CAN参数
-        self.node_id = hex(node_id)
+        self.node_id = node_id
         self.bustype = bustype
         self.channel = channel
         self.sdo_client_cobid = 0x600 + node_id
