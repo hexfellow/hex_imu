@@ -1,0 +1,9 @@
+<launch>
+
+
+    <node pkg="hex_imu" type="canopen_connector.py" name="hex_imu" output="screen">
+        <rosparam command="load" file="$(find hex_imu)/config/ros1/imu.yaml" />
+        <remap from="/imu_data" to="/imu_data" />
+        <remap from="/magnetic_data" to="/magnetic_data" />
+    </node>
+</launch>

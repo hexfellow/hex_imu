@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(canopen_connector)
+project(hex_imu)
 
 find_package(catkin REQUIRED)
 

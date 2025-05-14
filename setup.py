@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from glob import glob
 
-package_name = 'canopen_connector'
+package_name = 'hex_imu'
 
 
 def get_files(tar: str, src: str):
@@ -38,7 +38,7 @@ setup(
     license='',
     entry_points={
         'console_scripts': [
-            'canopen_connector = canopen_connector.canopen_connector:main',
+            'hex_imu = hex_imu.hex_imu:main',
         ],
     },
 )

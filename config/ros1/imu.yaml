@@ -1,0 +1,4 @@
+node_id: 0x10
+bustype: "socketcan"
+channel: "can0"
+frame_id: "imu"
