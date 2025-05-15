@@ -55,10 +55,11 @@ class CanopenImu:
         # ROS消息缓存
         self._init_ros()
         
+        self.prep_map_range = False
+        
                 
     def _init_can(self):
         try:
-            print(1)
             self.bus_heartbeat = can.interface.Bus(interface=self.bustype, channel=self.channel)
             self.bus_heartbeat.set_filters([{"can_id": self.heartbeat_cobid, "can_mask": 0x77F, "extended": False}])
             self.bus_maprange = can.interface.Bus(interface=self.bustype, channel=self.channel)
@@ -100,6 +101,11 @@ class CanopenImu:
                         self.last_heartbeat_time = time.time()
                         self.heartbeat_status = msg.data[0]
                         # print(f"收到心跳报文: 状态={self.heartbeat_status}")
+                        if self.prep_map_range == True and self.heartbeat_status != 0x05:
+                            while msg and not self.change_heartbeat_status() and self.running:
+                                print("更改心跳状态失败，重试中...")
+                                time.sleep(0.5)
+                    
                 with self.lock:
                     if self.last_heartbeat_time != 0 and (time.time() - self.last_heartbeat_time) > 1.5:
                         print("警告: 1.5秒未收到心跳报文")
@@ -306,6 +312,7 @@ class CanopenImu:
             while not self.change_heartbeat_status() and self.running:
                 print("更改心跳状态失败，重试中...")
                 time.sleep(0.5)
+            self.prep_map_range = True
             print("开始监听PDO数据...")
             self.data_thread = threading.Thread(target=self.read_data, daemon=True)
             self.data_thread.start()
@@ -331,8 +338,6 @@ class CanopenImu:
         except KeyboardInterrupt:
             print("用户中断操作")
             sys.exit(0)
-        # except Exception as e:
-        #     print(f"运行时错误: {e}")
         finally:
             self.stop()
     

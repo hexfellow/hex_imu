@@ -24,17 +24,15 @@ class DataInterface(InterfaceBase):
         
         ### parameters
         self._node.declare_parameter('node_id', 0x10)
-        self._node.declare_parameter('bustype', 'socketcan')
         self._node.declare_parameter('channel', 'can0')
         
         node_id = self._node.get_parameter('node_id').value
-        bustype = self._node.get_parameter('bustype').value
         channel = self._node.get_parameter('channel').value
         
         # canopen
         self._can_param = {
             "node_id": node_id,
-            "bustype": bustype,
+            "bustype": 'socketcan',
             "channel": channel,
         }
         

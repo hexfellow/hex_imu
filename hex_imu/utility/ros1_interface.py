@@ -23,13 +23,12 @@ class DataInterface(InterfaceBase):
         
         ### parameters
         node_id = rospy.get_param('~node_id', 0x10)
-        bustype = rospy.get_param('~bustype', 'socketcan')
         channel = rospy.get_param('~channel', 'can0')
         
         # canopen
         self._can_param = {
             "node_id": node_id,
-            "bustype": bustype,
+            "bustype": 'socketcan',
             "channel": channel,
         }
 

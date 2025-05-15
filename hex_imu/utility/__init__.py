@@ -12,6 +12,9 @@ elif ROS_VERSION == "2":
 else:
     raise ValueError("ROS_VERSION is not set")
 
+from .imu_util import ImuUtil as ImuUtil
+
 __all__ = [
-    DataInterface
+    DataInterface,
+    ImuUtil,
 ]
