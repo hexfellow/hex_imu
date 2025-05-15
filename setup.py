@@ -38,7 +38,7 @@ setup(
     license='',
     entry_points={
         'console_scripts': [
-            'hex_imu = hex_imu.hex_imu:main',
+            'CanopenImu = hex_imu.CanopenImu:main',
         ],
     },
 )
