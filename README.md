@@ -57,42 +57,67 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
 
 ### **Dependencies**
 
-- **ROS Noetic** or **ROS Humble**
-- **python-can**
-- **numpy**
+- This software is built on the **ROS Noetic** or **ROS Humble**, which needs to be installed first.  
+- **Package**
+	- **python-can**
+	- [**hex_utils**](https://github.com/hexfellow/hex_utils)
 
 ### **Install**
 
 1. Create a workspace `catkin_ws` and get into the `src`.
 
-   ```shell
-   mkdir -p catkin_ws/src
-   cd catkin_ws/src
-   ```
+	```shell
+	mkdir -p catkin_ws/src
+	cd catkin_ws/src
+	```
 
 2. Clone this repo.
 
-   ```shell
-   git clone git@github.com:hexfellow/hex_imu.git
+	```shell
+	git clone git@github.com:hexfellow/hex_imu.git
    ```
 
 3. Go to `catkin_ws` directory and build the repo.
 
-   ```shell
-   cd ../
-   catkin_make
-   ```
+	- **ROS1**
+	
+		```shell
+		cd ../
+		catkin_make
+		```
+	
+	- **ROS2**
+	
+		```shell
+		cd ../
+		colcon build
+		```
 
 4. Source the `setup.bash` and run the test below
 
-   ```shell
-   source devel/setup.bash --extend
-   ```
-
+	- **ROS 1**
+	    
+	    ```shell
+		source devel/setup.bash --extend
+	    ```
+	    
+	- **ROS 2**
+	    
+	    ```shell
+		source install/setup.bash --extend
+	    ```
 ### **Usage**
 
 1. Launch the main node:
 
-   ```shell
-   roslaunch hex_imu canopen_imu.launch
-   ```
+	- **ROS 1**
+        
+        ```shell
+		roslaunch hex_imu canopen_imu.launch
+        ```
+        
+    - **ROS 2**
+        
+        ```shell
+		ros2 launch hex_imu canopen_imu.launch.py
+        ```

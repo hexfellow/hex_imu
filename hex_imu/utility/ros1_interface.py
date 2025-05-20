@@ -14,10 +14,11 @@ from hex_utils import HexStamp
 from hex_utils import HexSensorImuQuat, HexSensorImuQuatStamped
 from hex_utils import HexSensorMag, HexSensorMagStamped
 
+
 class DataInterface(InterfaceBase):
 
     def __init__(self, name: str = "unknown"):
-        super().__init__()
+        super().__init__(name)
         ### ros node
         rospy.init_node(name)
         
