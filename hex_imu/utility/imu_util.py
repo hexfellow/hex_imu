@@ -196,18 +196,6 @@ class ImuUtil:
             self.__mag_y = struct.unpack('<h', msg.data[2:4])[0] * self.__map_range_mag
             self.__mag_z = struct.unpack('<h', msg.data[4:6])[0] * self.__map_range_mag
             
-            # vector_magnitude = math.sqrt(self.__mag_x**2 + self.__mag_y**2)
-            # if vector_magnitude == 0:
-            #     self.__mag_angle = 0
-            # else:
-            #     angle_rad = math.atan2(self.__mag_y, self.__mag_x)
-            #     angle_deg = math.degrees(angle_rad)
-            #     if angle_deg < 0:
-            #         self.__mag_angle = 360 + angle_deg
-            #     else:
-            #         self.__mag_angle = angle_deg
-            # print(f"Magnetic field angle: {self.__mag_angle:.2f}°")
-
         if all(v is not None for v in [
             self.__orientation_x, self.__orientation_y, self.__orientation_z, self.__orientation_w,
             self.__angular_velocity_x, self.__angular_velocity_y, self.__angular_velocity_z,

@@ -121,3 +121,12 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
         ```shell
 		ros2 launch hex_imu canopen_imu.launch.py
         ```
+
+2. If you want to output Azimuth, you can run the following sample code (only supports ROS1)
+
+        
+	```shell
+	roslaunch hex_imu canopen_imu.launch
+
+	rosrun hex_imu example.py
+	```
