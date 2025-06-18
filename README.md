@@ -61,7 +61,8 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
 - **Package**
 	- **python-can**
 	- [**hex_utils**](https://github.com/hexfellow/hex_utils)
-
+- **plugin**
+	- **[rviz_imu_plugin](https://index.ros.org/p/rviz_imu_plugin)**
 ### **Install**
 
 1. Create a workspace `catkin_ws` and get into the `src`.
@@ -122,7 +123,34 @@ This project is licensed under the terms of the Apache License 2.0 - see the [LI
 		ros2 launch hex_imu canopen_imu.launch.py
         ```
 
-2. If you want to output Azimuth, you can run the following sample code (only supports ROS1)
+2. We also offer a dedicated launch file for visualizing IMU data. Follow the steps below to get started:
+	
+	Before you begin, make sure you have the necessary plugin installed for RViz:
+	- **ROS 1**
+		 
+	```
+		sudo apt install ros-noetic-rviz-imu-plugin
+	```
+		
+	- **ROS 2**
+		
+	```
+		sudo apt install ros-humble-rviz-imu-plugin
+	```
+	Once the plugin is installed, you can start the visualization tool with the following command:
+	- **ROS 1**
+        
+        ```shell
+		roslaunch hex_imu canopen_imu_display.launch
+        ```
+        
+    - **ROS 2**
+        
+        ```shell
+		ros2 launch hex_imu canopen_imu_display.launch.py
+        ```
+
+3. If you want to output Azimuth, you can run the following sample code (only supports ROS1)
 
         
 	```shell

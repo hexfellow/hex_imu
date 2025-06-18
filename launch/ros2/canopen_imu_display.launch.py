@@ -23,6 +23,20 @@ def generate_launch_description():
         ]
     )
     
+    rviz_config_file = os.path.join(
+        pkg_dir, 'config/ros2/rviz2', 'imu.rviz' 
+    )
+    
+    rviz2_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', rviz_config_file],
+        output='screen'
+    )
+    
+    
     return LaunchDescription([
         canopen_imu_node,
+        rviz2_node
     ])
